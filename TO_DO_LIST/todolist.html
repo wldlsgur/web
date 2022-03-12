@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>todolist</title>
+</head>
+<body>
+    <div class = wrap>
+        <div class = input>
+            <input id = textid type ="text" placeholder="입력" name="input_text">
+            <input type="button" value="추가" onclick="createlist()">
+        </div>
+        <div id="output">
+
+        </div>
+    </div>
+</body>
+<script>
+    function createlist(){
+        var text = document.querySelector("#textid");//들어갈 값
+        var ouput = document.querySelector("#output");//최상위 부모
+        
+        if(text.value != "")
+        {
+            var root = document.createElement("div");
+            root.setAttribute("class", text.value+"root");
+
+            var list = document.createElement("span");//값 동적 생성 
+            list.innerHTML = text.value;
+            list.setAttribute("class",text.value+"_text");
+
+            var dlebtn = document.createElement("span");
+            dlebtn.innerHTML = "<input type = button value = 'X' onclick = 'DeleteLine(this)'><br>";
+            dlebtn.setAttribute('class',text.value+"btn");
+            
+            root.appendChild(list);
+            root.appendChild(dlebtn);
+
+            console.log(root);
+
+            ouput.appendChild(root);
+        }
+        text.value = "";
+    }
+
+    function DeleteLine(self){
+        var root = document.querySelector("#output");//최상위 부모
+        var target = self.parentNode.parentNode;
+        console.log(target);
+        target.remove();
+    }
+</script>
+</html>
