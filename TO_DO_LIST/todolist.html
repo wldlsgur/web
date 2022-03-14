@@ -1,56 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>todolist</title>
-</head>
-<body>
-    <div class = wrap>
-        <div class = input>
-            <input id = textid type ="text" placeholder="입력" name="input_text">
-            <input type="button" value="추가" onclick="createlist()">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>todolist</title>
+    </head>
+
+    <body>
+        <div class="wrap">
+            <form id="form-submit">
+                <input id="form-text" type="text" placeholder="입력">
+                <input type="submit" value="추가">
+            </form>
+            <div id="result"></div>
         </div>
-        <div id="output">
+    </body>
 
-        </div>
-    </div>
-</body>
-<script>
-    function createlist(){
-        var text = document.querySelector("#textid");//들어갈 값
-        var ouput = document.querySelector("#output");//최상위 부모
-        
-        if(text.value != "")
-        {
-            var root = document.createElement("div");
-            root.setAttribute("class", text.value+"root");
+    <script>
+        const submit = document.querySelector("#form-submit");
+        const text = document.querySelector("#form-text");
+        const root = document.querySelector("#result"); //root
 
-            var list = document.createElement("span");//값 동적 생성 
-            list.innerHTML = text.value;
-            list.setAttribute("class",text.value+"_text");
+        submit.addEventListener("submit", Createlist);
 
-            var dlebtn = document.createElement("span");
-            dlebtn.innerHTML = "<input type = button value = 'X' onclick = 'DeleteLine(this)'><br>";
-            dlebtn.setAttribute('class',text.value+"btn");
-            
-            root.appendChild(list);
-            root.appendChild(dlebtn);
+        window.onload = function () { //페이지 로드 시
 
-            console.log(root);
-
-            ouput.appendChild(root);
         }
-        text.value = "";
-    }
 
-    function DeleteLine(self){
-        var root = document.querySelector("#output");//최상위 부모
-        var target = self.parentNode.parentNode;
-        console.log(target);
-        target.remove();
-    }
-</script>
+        function Add_Localstorage(key, value) {
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem(key,value);
+            } else {
+                return;
+            }
+        }
+
+        function Del_Localstorage(key){
+            if (typeof(Storage) !== "undefined") {
+                localStorage.removeItem(key);
+            } else {
+                return;
+            }
+        }
+
+        function Createlist(e) {
+            e.preventDefault(); //submit 이벤트 시 새로고침 default
+            //console.log(e);
+            if (text.value.length === 0) 
+                return;
+            //쿼리셀렉트로 하면 id에 숫자가 불가능하다 반드시 문자가 포함 하지만 겟아이디를 사용하면 됨
+            //클래스는 여러개라서 list로 반환이 된다. list의 개수를 활용
+            let check_list = document.getElementsByClassName(`${text.value}`);
+            console.log(check_list);
+            if(check_list.length != 0){
+                alert("이미 중복되었습니다!");
+                text.value = "";
+                return;
+            }
+
+            let new_list = document.createElement("div"); //div생성
+            new_list.classList.add("list");
+            new_list.innerHTML = `
+            <span class="${text.value}">${text.value}</span>
+            <input class="delete" type = button value = '삭제' onclick = 'Deletelist(this)'>
+            `;
+            root.appendChild(new_list);
+            Add_Localstorage(text.value, new_list);
+            console.log(new_list);
+            text.value = "";
+        }
+
+        function Deletelist(self) {
+            let target = self.parentNode;
+            let beforNode = self.previousElementSibling.classList;//이전 형제 태그의 클래스 이름 가져오기
+            Del_Localstorage(beforNode);
+            target.remove();
+        }
+    </script>
+
 </html>
