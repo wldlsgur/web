@@ -23,61 +23,66 @@
         const text = document.querySelector("#form-text");
         const root = document.querySelector("#result"); //root
 
-        submit.addEventListener("submit", Createlist);
-
         window.onload = function () { //페이지 로드 시
-
-        }
-
-        function Add_Localstorage(key, value) {
-            if (typeof(Storage) !== "undefined") {
-                localStorage.setItem(key,value);
-            } else {
-                return;
+            for(let i=0 ; i<localStorage.length ; i++){
+                var value = localStorage.getItem(localStorage.key(i));
+                let list = document.createElement("div");
+                list.classList.add("list");
+                list.innerHTML = value;
+                console.log(list);
+                root.appendChild(list);
             }
         }
-
-        function Del_Localstorage(key){
-            if (typeof(Storage) !== "undefined") {
+        var LocalStorage = {
+            Add : function(key, value){
+                if (typeof(Storage) !== "undefined") {
+                    localStorage.setItem(key,value);
+                } else {
+                    return;
+                }
+            },
+            Delete : function(key){
+                if (typeof(Storage) !== "undefined") {
                 localStorage.removeItem(key);
-            } else {
-                return;
+                } else {
+                    return;
+                }
             }
         }
+        var List = {
+            Create : function(e){
+                e.preventDefault(); //submit 이벤트 시 새로고침 default
+                //console.log(e);
+                if (text.value.length === 0) 
+                    return;
+                //쿼리셀렉트로 하면 id에 숫자가 불가능하다 반드시 문자가 포함 하지만 겟아이디를 사용하면 됨
+                //클래스는 여러개라서 list로 반환이 된다. list의 개수를 활용
+                let check_list = document.getElementsByClassName(`${text.value}`);
+                console.log(check_list);
+                if(check_list.length != 0){
+                    alert("이미 중복되었습니다!");
+                    text.value = "";
+                    return;
+                }
 
-        function Createlist(e) {
-            e.preventDefault(); //submit 이벤트 시 새로고침 default
-            //console.log(e);
-            if (text.value.length === 0) 
-                return;
-            //쿼리셀렉트로 하면 id에 숫자가 불가능하다 반드시 문자가 포함 하지만 겟아이디를 사용하면 됨
-            //클래스는 여러개라서 list로 반환이 된다. list의 개수를 활용
-            let check_list = document.getElementsByClassName(`${text.value}`);
-            console.log(check_list);
-            if(check_list.length != 0){
-                alert("이미 중복되었습니다!");
+                let new_list = document.createElement("div"); //div생성
+                new_list.classList.add("list");
+                new_list.innerHTML = `
+                <span class="${text.value}">${text.value}</span>
+                <input class="delete" type = button value = '삭제' onclick = 'List.Delete(this)'>
+                `;
+                root.appendChild(new_list);
+                LocalStorage.Add(text.value,`<span class="${text.value}">${text.value}</span><input class="delete" type = button value = '삭제' onclick = 'List.Delete(this)'>`);
+                console.log(new_list);
                 text.value = "";
-                return;
+            },
+            Delete : function(self){
+                let target = self.parentNode;
+                let beforNode = self.previousElementSibling.classList;//이전 형제 태그의 클래스 이름 가져오기
+                LocalStorage.Delete(beforNode);
+                target.remove();
             }
-
-            let new_list = document.createElement("div"); //div생성
-            new_list.classList.add("list");
-            new_list.innerHTML = `
-            <span class="${text.value}">${text.value}</span>
-            <input class="delete" type = button value = '삭제' onclick = 'Deletelist(this)'>
-            `;
-            root.appendChild(new_list);
-            Add_Localstorage(text.value, new_list);
-            console.log(new_list);
-            text.value = "";
         }
-
-        function Deletelist(self) {
-            let target = self.parentNode;
-            let beforNode = self.previousElementSibling.classList;//이전 형제 태그의 클래스 이름 가져오기
-            Del_Localstorage(beforNode);
-            target.remove();
-        }
+        submit.addEventListener("submit", List.Create);
     </script>
-
 </html>
