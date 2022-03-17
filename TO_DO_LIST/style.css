@@ -1,30 +1,49 @@
-.wrap{
-    padding-top: 5%;
-    /* background-color: aquamarine; */
-    width: 100%;
-    height:100%;
-    
+*{
+    margin:0px;
+    padding:0px;
 }
-
-form{
-    background-color: aqua;
-    border-radius: 10px;
-    border: 3px solid black;
-    padding:1%;
-    width: 25%;
-    margin:0 auto;
+#modal{
+    position:relative;
+    display: none;
+    border: 3px solid gray;
+    width: 200px;
+    height: 200px;
     text-align: center;
-    
+    margin: 0 auto;
 }
-
-#result{
-    background-color: bisque;
+body{
+    background-color: black;
+}
+#wrap{
+    border:3px solid white;
     border-radius: 10px;
-    border: 3px solid black;
-    width: 27%;
-    height: 500px;
-    margin:0 auto;
-    margin-top: 10px; 
-    text-align: center; 
+    margin: 0 auto;
+    margin-top : 5%;
+    width: 30%;
+    height: 600px;
+}
+#form-submit{
+    border-bottom: 3px solid white;
+    text-align: center;
+    padding :30px;
+}
+#result{
+    height: 515px;
     overflow: scroll;
+    -ms-overflow-style: none;
+}
+/* 스크롤바 숨기기 */
+#result::-webkit-scrollbar{ display:none; }
+
+.list{
+    color: white;
+    margin : 30px;
+    border-bottom: 3px solid white;
+}
+.list > span{
+
+}
+.list > input{
+    float : right;
+    border-radius: 7px;
 }

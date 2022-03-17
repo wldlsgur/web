@@ -9,12 +9,18 @@
     </head>
 
     <body>
-        <div class="wrap">
+        <div id="wrap"> 
             <form id="form-submit">
-                <input id="form-text" type="text" placeholder="입력">
+                <input id="form-text" type="text" placeholder="입력" size="40">
                 <input type="submit" value="추가">
             </form>
-            <div id="result"></div>
+            <div id="result">
+            </div>
+        </div>
+        <div id="modal">
+            <p>삭제 하시겠습니까?</p>
+            <input type="button" value="O">
+            <input type="button" value="X">
         </div>
     </body>
 
@@ -77,6 +83,8 @@
                 text.value = "";
             },
             Delete : function(self){
+                document.querySelector("#modal").style.display = 'block';
+                
                 let target = self.parentNode;
                 let beforNode = self.previousElementSibling.classList;//이전 형제 태그의 클래스 이름 가져오기
                 LocalStorage.Delete(beforNode);
