@@ -3,18 +3,33 @@
     padding:0px;
 }
 #modal{
-    position:relative;
     display: none;
-    border: 3px solid gray;
-    width: 200px;
-    height: 200px;
+    border: 3px solid white;
+    border-radius: 7px;
+    background-image: url("./image/backgroundimage.jpg");
+    height: 25%;
+    width: 15%;
+    position:absolute;
+    left: 42%;
+    top: 35%;
+}
+#modal_info{
+    margin-top: 27%;
     text-align: center;
-    margin: 0 auto;
+    letter-spacing: 5px;
+    color: white;
+}
+.modal_btn{
+    margin:10%;
+    background-color: white;
+    border: 3px solid white;
+    border-radius: 7px;
 }
 body{
-    background-color: black;
+    background-image: url("./image/backgroundimage.jpg");
 }
 #wrap{
+    position: relative;
     border:3px solid white;
     border-radius: 10px;
     margin: 0 auto;
@@ -26,6 +41,15 @@ body{
     border-bottom: 3px solid white;
     text-align: center;
     padding :30px;
+}
+#form-text{
+    text-align: center;
+    width: 80%;
+    border: 3px solid white;
+    border-radius: 7px;
+}
+#form-submit > input[type=submit]{
+    border-radius: 7px;
 }
 #result{
     height: 515px;
@@ -39,9 +63,6 @@ body{
     color: white;
     margin : 30px;
     border-bottom: 3px solid white;
-}
-.list > span{
-
 }
 .list > input{
     float : right;
