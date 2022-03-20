@@ -35,7 +35,7 @@
         let delete_target = '';
 
         modal_btn.forEach((btn) => {
-            btn.addEventListener("click", modal_delete)
+            btn.addEventListener("click", modal_delete);
         });
 
         window.onload = function () { //페이지 로드 시
@@ -73,30 +73,34 @@
         var List = {
             Create : function(e){
                 e.preventDefault(); //submit 이벤트 시 새로고침 default
-                if (text.value.length === 0) return;
-                let check_list = document.getElementsByClassName(`${text.value}`);
-                if(check_list.length != 0){
-                    alert("이미 중복되었습니다!");
-                    text.value = "";
-                    return;
-                }
-
+                let check_list = document.querySelectorAll("span");//중복 확인용
                 let new_list = document.createElement("div"); //div생성
-                new_list.classList.add("list");
-                new_list.innerHTML = `
-                <span class="${text.value}">${text.value}</span>
-                <input class="delete" type = button value = '삭제'>
+                let new_value = `
+                <span>${text.value}</span>
+                <input type = button value = '삭제'>
                 `;
-                root.appendChild(new_list);
-                new_list.addEventListener("click", List.Delete);
 
-                LocalStorage.Add(text.value,`<span class="${text.value}">${text.value}</span><input class="delete" type = button value = '삭제'>`);
+                if (text.value.length === 0) return;
+                for(let i=0 ; i<check_list.length ; i++)
+                {
+                    if(check_list[i].innerHTML === text.value){
+                        alert("이미 중복되었습니다!");
+                        text.value = "";
+                        return;
+                    }
+                }
+                
+                new_list.classList.add("list");
+                new_list.innerHTML = new_value;
+                root.appendChild(new_list);
+                new_list.querySelector("input").addEventListener("click", List.Delete);
+
+                LocalStorage.Add(text.value,new_value);
                 
                 text.value = "";
             },
             Delete : function(e){
                 modal.style.display = 'block';//모달창 띄우기
-
                 delete_target = e.target;//발생한 이벤트 노드
             }
         }
@@ -105,9 +109,9 @@
             if(e.target.value === '네')
             {
                 let target_parent = delete_target.parentNode;//삭제할 부모노드
-                let beforNode = delete_target.previousElementSibling.classList;//이전 형제 태그의 클래스 이름 가져오기(로컬스토리지 키 값)
+                let key = delete_target.previousElementSibling.innerHTML;//로컬스토리지 키 값
                 
-                LocalStorage.Delete(beforNode);
+                LocalStorage.Delete(key);
                 target_parent.remove();
             }
             modal.style.display = "none";
