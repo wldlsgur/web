@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>p425</title>
 </head>
 <body>
@@ -17,7 +18,6 @@
     </table>
 </body>
 <script>
-
     window.onload = function(){
         let tby = document.querySelector("tbody");
         let make_table = ``;
@@ -25,17 +25,32 @@
         for(let i=0 ; i<10 ; i++){
             make_table += `<tr>`;
             for(let j=0 ; j<10 ; j++){
-                make_table += `<td><img src="" alt="" width="50px" height="50px"></td>`;
+                make_table += `<td><img src=""></td>`;
             }
             make_table += `</tr>`;
         }
         tby.innerHTML = make_table;
-
-        let random = Math.floor(Math.random() * 100);
-        console.log(random);
         let image_list = document.querySelectorAll("img");
-        console.log(image_list[random]);
-        image_list[random].src = `./backgroundimage.jpg`;
+        image_list[makerandom()].src = `./backgroundimage.jpg`;
+
+        image_list.forEach(img => {
+            img.addEventListener('click', moveimage);
+        });
     }
+
+    function moveimage(e){
+        console.log(e.currentTarget.src);
+        if(e.currentTarget.src === "http://127.0.0.1:5500/%EC%B1%85/CHAPTER9/p425/backgroundimage.jpg"){
+            e.currentTarget.src="";
+            let image_list = document.querySelectorAll("img");
+            image_list[makerandom()].src = `./backgroundimage.jpg`;
+        }
+    }
+
+    function makerandom(){
+        return Math.floor(Math.random() * 100);
+    }
+
+
 </script>
 </html>
