@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel = "stylesheet" type = "text/css" href="/stylesheets/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+</head>
+<body>
+    <div class = "wrap">
+        <div class = "intro_text">
+            로그인
+        </div>
+            <div class = "ID_PW">
+                아이디와 비밀번호를 입력해주세요!
+                <form action = "/check/login" method="get">
+                    <div class = "ID">
+                        ID : <input class type="text" name="ID" size = 35> <br>
+                    </div>
+                    <div class = "PW">
+                        PW : <input type="password" name="PW" size = 35>
+                    </div>
+                    <div class = "intro_button">
+                        <input type = "submit" value="로그인" size = 35>
+                    </div>
+                </form>
+                <div class = "intro_button">
+                    <button onclick="location.href='/page/user'">회원가입</button>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

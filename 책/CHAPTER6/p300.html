@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>별 문자 출력하기</h1><hr>
+</body>
+<script>
+    function printfStar(){
+        let ret = prompt('정수 입력');
+        let start = '';
+        if(!isNaN(parseInt(ret))){
+            for(let i=0 ; i<ret ; i++){
+                start += '*';
+                document.write(`${start}<br>`);
+            }
+        }
+        else{
+            document.write("입력 오류 입니다.");
+        }
+    }
+    printfStar();
+</script>
+</html>

@@ -1,0 +1,54 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+header{
+    background-color: yellow;
+    padding-bottom: 2em;    
+}
+nav{
+    background-color:bisque;
+}
+footer{
+    background-color: orange;
+    border-radius: 10px;
+    padding: 1em;
+}
+section{
+    padding: 1em;
+    background-color: pink;
+}
+
+#move{
+    display: flex;
+    height: 50em;
+}
+h1{
+    color: brown;
+    text-align: center;
+    padding-bottom: 1em;
+}
+section h2{
+    color: blue;
+    text-shadow: 3px 3px white;
+    margin: 1em;
+}
+ul{
+    text-align: left;
+    width: 10em;
+    padding-left: 3em;
+    padding-top: 1em;
+}
+li{
+    margin:5px
+}
+
+a{
+    text-decoration: none;
+}
+p{
+    font-style:italic;
+    font-size: 1em;
+    text-indent: 1em;
+}

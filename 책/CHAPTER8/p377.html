@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>겜블링 게임</h1>
+    <p>각 숙자를 클릭하면 0에서 2사이의 난수로 바뀝니다. 모두 같은 수가 나오면 승리합니다.</p>
+    <div id="root">
+        <span id="first">0</span>
+        <span id="second">0</span>
+        <span id="third">0</span>
+    </div>
+    <div id="msg">
+
+    </div>
+</body>
+<script>
+    const root = document.querySelector('#root');
+    const msg = document.querySelector('#msg');
+    const all = document.querySelectorAll('span');
+
+    let check_bool;
+
+    for(let i=0 ; i<all.length ; i++){
+        all[i].addEventListener('click', changenumber);
+        if(i === all.length-1){
+            all[i].addEventListener('click', check);
+        }
+    }
+    msg.addEventListener('click', regame);
+
+    function changenumber(e){
+        e.target.innerHTML = Math.floor(Math.random() * 3);
+    }
+
+    function check(){
+        let check_num = all[0].innerHTML;
+        for(let i=0 ; i<all.length ; i++){
+            if(check_num === all[i].innerHTML) check_bool = true;
+            else check_bool = false;
+        }
+        console.log(check_bool);
+        if(check_bool === true){
+            msg.innerHTML = "Success(click here to do agian)";
+        }
+        else{
+            msg.innerHTML = "fail(click here to do agian)";
+        }
+        check_num = all[0];
+    }
+
+    function regame(){
+        for(let i=0 ; i<all.length ; i++){
+            all[i].innerHTML = 0;
+            msg.innerHTML = null;
+        }
+    }
+</script>
+</html>

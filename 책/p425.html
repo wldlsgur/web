@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p425</title>
+</head>
+<body>
+    <h1>마우스 클릭 연습</h1>
+    <hr>
+    <table frame="voide" border="1px">
+        <thead></thead>
+        <tbody>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</body>
+<script>
+
+    window.onload = function(){
+        let tby = document.querySelector("tbody");
+        let make_table = ``;
+
+        for(let i=0 ; i<10 ; i++){
+            make_table += `<tr>`;
+            for(let j=0 ; j<10 ; j++){
+                make_table += `<td><img src="" alt="" width="50px" height="50px"></td>`;
+            }
+            make_table += `</tr>`;
+        }
+        tby.innerHTML = make_table;
+
+        let random = Math.floor(Math.random() * 100);
+        console.log(random);
+        let image_list = document.querySelectorAll("img");
+        console.log(image_list[random]);
+        image_list[random].src = `./backgroundimage.jpg`;
+    }
+</script>
+</html>

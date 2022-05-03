@@ -1,0 +1,25 @@
+.header_main{
+    display: flex;
+}
+.header > h2{
+    background-color: aqua; 
+    text-align: center;
+    margin:auto;
+    
+}
+.header{
+    padding-bottom: 30px;
+    padding-top: 10px;
+    background-color: bisque;
+    border-bottom: 3px solid black;
+
+}
+
+.inputinfo{
+    background-color: brown;
+    display: flex;
+}
+
+#header_date{
+    background-color: chartreuse;
+}
