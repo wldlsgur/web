@@ -8,16 +8,51 @@
     <title>p425</title>
 </head>
 <body>
-    <h1>마우스 클릭 연습</h1>
-    <hr>
-    <table frame="voide" border="1px">
-        <thead></thead>
-        <tbody>
-        </tbody>
-        <tfoot></tfoot>
-    </table>
+    <header>
+        <h1>마우스 클릭 연습</h1><hr>
+    </header>
+    <nav></nav>
+    <main>
+        <section>
+            <article>
+                <table frame="voide" border="1px">
+                    <thead></thead>
+                    <tbody>
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>
+            </article>
+        </section>
+        <section>
+            <article>
+                <label>바나나<input type="radio" name="과일" value="banana.jpg"></label>
+                <label>망고<input type="radio" name="과일" value="backgroundimage.jpg"></label>
+                <label>사과<input type="radio" name="과일" value="backgroundimage.jpg"></label>
+                <img src="" alt="">
+            </article>
+        </section>
+    </main>
+    <footer></footer>
 </body>
 <script>
+    const body = document.querySelector('body');
+    const radio = document.getElementsByName('과일');
+    
+    for(let i=0 ; i<radio.length ; i++){
+        radio[i].addEventListener('click', drawimage)
+    }
+
+    function drawimage(e){
+        let img = document.querySelector('article > img');
+        img.src = e.currentTarget.value;
+    }
+
+    window.onfocus = function(){
+        body.style.backgroundColor = 'white';
+    }
+    window.onblur = function(){
+        body.style.backgroundColor = 'gray';
+    }
     window.onload = function(){
         let tby = document.querySelector("tbody");
         let make_table = ``;
@@ -50,7 +85,5 @@
     function makerandom(){
         return Math.floor(Math.random() * 100);
     }
-
-
 </script>
 </html>
