@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header></header>
+    <nav></nav>
+    <main>
+        <section>
+            <article>
+
+            </article>
+        </section>
+    </main>
+    <footer></footer>
+</body>
+<script>
+    const timerID = window.setInterval("moveimage()", 1000);
+    const bdy = document.querySelector('body');
+    Math.floor(Math.random() * 100);
+
+    for(let i=0 ; i<30 ; i++){
+        let image = document.createElement('div');
+        image.classList.add('rocat');
+        image.innerHTML = ` 
+            <img src="snow.jpg">
+        `;
+        bdy.appendChild(image);
+    }
+    window.onload = function(){
+        bdy.style.backgroundImage = "url(./backgroundimage.jpg)";
+    }
+    function moveimage(){
+
+    }
+</script>
+</html>
