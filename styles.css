@@ -1,0 +1,42 @@
+#main{
+    background-color: #e8e8e8;
+    border-radius: 1em;
+    text-align: center;
+    padding: 2em;
+    margin: 3em 1em 1em 3em;
+}
+#title{
+    font-size: 3em;
+}
+#img-div{
+    background-color: white;
+    padding: 1em;
+}
+#img-div > img{
+    display: block;
+    margin-bottom: 1em;
+}
+#img-div > #image{
+    max-width: 100%;
+    height: auto;
+}
+#tribute-info{
+    margin: 0 auto;
+}
+#tribute-info > ul, #tribute-info > p{
+    text-align: left;
+    width: 69%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#tribute-info > ul li{
+    margin : 2em;
+}
+#tribute-info > p{
+    font-style: italic;
+    color: gray;
+    padding: 3em;
+}
+#tribute-link{
+    color: purple;
+}
