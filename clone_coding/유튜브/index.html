@@ -4,35 +4,160 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"
+    />
     <title>Youtube</title>
     <style>
       body {
         height: 100vh;
       }
       * {
-        padding: 0;
-        margin: 0;
+        padding: 0px;
+        margin: 0px;
         box-sizing: border-box;
         list-style: none;
         text-decoration: none;
         border-collapse: collapse;
         color: black;
       }
+      header {
+        width: 100%;
+        height: 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px 0 10px;
+        background-color: black;
+      }
+      header > .logo > .title {
+        color: white;
+      }
+      header .bi {
+        color: white;
+      }
+      /* header */
+      .player {
+        width: 100%;
+        background-color: black;
+      }
+      .player > .video {
+        width: 100%;
+        height: 500px;
+        margin: auto;
+      }
+      /* video */
+      .info > .metadata > .hastag {
+        padding: 10px 0px 0px 10px;
+        display: flex;
+      }
+      .info > .metadata > .infoandbtn {
+        display: flex;
+        padding: 0px 0px 0px 10px;
+      }
+      .info > .metadata > .hastag > li {
+        margin-left: 10px;
+        color: blue;
+      }
+      /* info */
     </style>
   </head>
   <body>
     <header>
       <div class="logo">
-        <i class="fab fa-youtube"></i>
+        <i class="bi bi-youtube"></i>
         <span class="title">Youtube</span>
       </div>
       <div class="icons">
-        <i class="search"></i>
-        <i class="nav"></i>
+        <i class="bi bi-search"></i>
+        <i class="bi bi-list"></i>
       </div>
     </header>
-    <section class="player"></section>
-    <section class="info"></section>
-    <section class="UpNext"></section>
+    <!-- header -->
+    <section class="player">
+      <video
+        src="./video/KakaoTalk_20200928_192132206.mp4"
+        autoplay
+        controls
+        class="video"
+      ></video>
+    </section>
+    <!-- video -->
+    <section class="info">
+      <div class="metadata">
+        <ul class="hastag">
+          <li>#DreamCoding</li>
+          <li>#DreamCoders</li>
+          <li>#Ellie</li>
+        </ul>
+        <div class="infoandbtn">
+          <p class="main_info">
+            Clone Coding: Youtube Mobile Website 유튜브 모바일 웹사이트 따라
+            만들기 | 프론트엔드 개발자 입문편: HTML, CSS, Javascript 드림코딩과
+            함께하는 프론트엔드 실전 입문편
+          </p>
+          <button class="morebtn"><i class="bi bi-arrow-up"></i></button>
+        </div>
+      </div>
+      <div class="sub_info">
+        <span>1M views 1 month ago</span>
+        <ul class="actions">
+          <li>
+            <button>
+              <i class="bi bi-hand-thumbs-up-fill"></i><span>1K</span>
+            </button>
+          </li>
+          <li>
+            <button>
+              <i class="bi bi-hand-thumbs-down-fill"></i><span>0</span>
+            </button>
+          </li>
+          <li>
+            <button><i class="bi bi-share-fill"></i><span>Share</span></button>
+          </li>
+          <li>
+            <button><i class="bi bi-plus"></i><span>Save</span></button>
+          </li>
+          <li>
+            <button><i class="bi bi-flag-fill"></i><span>Report</span></button>
+          </li>
+        </ul>
+      </div>
+      <div class="userinfo">
+        <img class="user_image" src="./video/20170917_204428.jpg" alt="" />
+        <div class="user_metadata">
+          <p>드림코딩 by 엘리</p>
+          <p>1M subcribers</p>
+        </div>
+        <p>SUBSCRIBE</p>
+      </div>
+    </section>
+    <section class="UpNext">
+      <span>Up next</span>
+      <article>
+        <img src="./video/20170917_204428.jpg" alt="" />
+        <div>
+          <p>
+            프론트엔드 강의, 프론트엔드 개발자가 되고 싶다면? 웹개발 입문자편
+            강의를 시작합니다 ⭐️ (HTML, CSS, Javascript + 실전 프로젝트)
+          </p>
+          <p>드림코딩 by 엘리</p>
+          <p>82K views</p>
+        </div>
+        <i class="bi bi-three-dots-vertical"></i>
+      </article>
+    </section>
   </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
 </html>
