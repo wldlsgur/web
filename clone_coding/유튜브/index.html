@@ -19,7 +19,14 @@
       body {
         height: 100vh;
       }
-      * {
+      button,
+      button:focus {
+        border: none;
+        cursor: pointer;
+        outline: none;
+      }
+      *,
+      ul {
         padding: 0px;
         margin: 0px;
         box-sizing: border-box;
@@ -55,18 +62,124 @@
       }
       /* video */
       .info > .metadata > .hastag {
-        padding: 10px 0px 0px 10px;
         display: flex;
+        margin-left: 10px;
+      }
+      .info > .metadata > .hastag > li {
+        color: blue;
       }
       .info > .metadata > .infoandbtn {
         display: flex;
-        padding: 0px 0px 0px 10px;
-      }
-      .info > .metadata > .hastag > li {
+        justify-content: space-between;
         margin-left: 10px;
+      }
+      .info > .metadata > .infoandbtn > .main_info {
+        display: -webkit-box;
+        /* 글씨 줄이 2줄이 최대로 고정 시키는 것 */
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+      .info > .metadata > .infoandbtn > .morebtn {
+        height: 100%;
+      }
+      .info > .metadata > .views {
+        margin-left: 10px;
+      }
+      .info > .metadata > .views {
+        color: gray;
+      }
+      .info > .actions {
+        display: flex;
+        justify-content: space-around;
+        margin: 10px 0px 10px;
+      }
+      .actions button {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+      }
+      .actions button i {
+        margin: 0 auto;
+        margin-bottom: 5px;
+        font-size: 16px;
+        color: gray;
+      }
+      .actions button i.active {
         color: blue;
       }
+      .userinfo {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        border-top: darkgray 1px solid;
+        border-bottom: darkgray 1px solid;
+        padding: 10px 0px 10px 0px;
+      }
+      .userinfo > .metadata > .user_metadata {
+        display: flex;
+        flex-direction: column;
+        margin-left: 15px;
+      }
+      .userinfo > .metadata {
+        display: flex;
+      }
+      .metadata > img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      .userinfo > button {
+        background-color: white;
+        color: red;
+      }
       /* info */
+      .upnext {
+        width: 100%;
+        padding: 15px 0px 10px 10px;
+      }
+      .upnext > .title1 {
+        color: darkgray;
+      }
+      .upnext > .item > .img {
+        flex: 1 1 35%;
+      }
+      .upnext > .item > .img img {
+        width: 100%;
+      }
+      .upnext > .item {
+        display: flex;
+        /* display: grid;
+        grid-template-columns: 2fr 4fr auto;
+        grid-auto-rows: 200px; */
+        margin-top: 10px;
+      }
+      .upnext > .item > .info {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        flex: 1 1 60%;
+      }
+      .upnext > .item > .morebtn {
+        flex: 1 1 5%;
+      }
+      /* upnext */
+      .infoANDupnext {
+        display: flex;
+        flex-direction: column;
+      }
+      @media screen and (min-width: 768px) {
+        .infoANDupnext {
+          flex-direction: row;
+          margin: 10px 0px;
+        }
+      }
+      .info > .metadata > .infoandbtn > .morebtn:hover {
+        transform: rotate(180deg);
+      }
+      .info > .metadata > .infoandbtn > .morebtn {
+        transition: transform 300ms ease-in-out;
+      }
     </style>
   </head>
   <body>
@@ -90,28 +203,28 @@
       ></video>
     </section>
     <!-- video -->
-    <section class="info">
-      <div class="metadata">
-        <ul class="hastag">
-          <li>#DreamCoding</li>
-          <li>#DreamCoders</li>
-          <li>#Ellie</li>
-        </ul>
-        <div class="infoandbtn">
-          <p class="main_info">
-            Clone Coding: Youtube Mobile Website 유튜브 모바일 웹사이트 따라
-            만들기 | 프론트엔드 개발자 입문편: HTML, CSS, Javascript 드림코딩과
-            함께하는 프론트엔드 실전 입문편
-          </p>
-          <button class="morebtn"><i class="bi bi-arrow-up"></i></button>
+    <div class="infoANDupnext">
+      <section class="info">
+        <div class="metadata">
+          <ul class="hastag">
+            <li>#DreamCoding</li>
+            <li>#DreamCoders</li>
+            <li>#Ellie</li>
+          </ul>
+          <div class="infoandbtn">
+            <span class="main_info">
+              Clone Coding: Youtube Mobile Website 유튜브 모바일 웹사이트 따라
+              만들기 | 프론트엔드 개발자 입문편: HTML, CSS, Javascript
+              드림코딩과 함께하는 프론트엔드 실전 입문편
+            </span>
+            <button class="morebtn"><i class="bi bi-arrow-up"></i></button>
+          </div>
+          <span class="views">1M views 1 month ago</span>
         </div>
-      </div>
-      <div class="sub_info">
-        <span>1M views 1 month ago</span>
         <ul class="actions">
           <li>
             <button>
-              <i class="bi bi-hand-thumbs-up-fill"></i><span>1K</span>
+              <i class="bi bi-hand-thumbs-up-fill active"></i><span>1K</span>
             </button>
           </li>
           <li>
@@ -129,31 +242,53 @@
             <button><i class="bi bi-flag-fill"></i><span>Report</span></button>
           </li>
         </ul>
-      </div>
-      <div class="userinfo">
-        <img class="user_image" src="./video/20170917_204428.jpg" alt="" />
-        <div class="user_metadata">
-          <p>드림코딩 by 엘리</p>
-          <p>1M subcribers</p>
+        <div class="userinfo">
+          <div class="metadata">
+            <img class="user_image" src="./video/20170917_204428.jpg" alt="" />
+            <div class="user_metadata">
+              <span>드림코딩 by 엘리</span>
+              <span>1M subcribers</span>
+            </div>
+          </div>
+          <button>SUBSCRIBE</button>
         </div>
-        <p>SUBSCRIBE</p>
-      </div>
-    </section>
-    <section class="UpNext">
-      <span>Up next</span>
-      <article>
-        <img src="./video/20170917_204428.jpg" alt="" />
-        <div>
-          <p>
-            프론트엔드 강의, 프론트엔드 개발자가 되고 싶다면? 웹개발 입문자편
-            강의를 시작합니다 ⭐️ (HTML, CSS, Javascript + 실전 프로젝트)
-          </p>
-          <p>드림코딩 by 엘리</p>
-          <p>82K views</p>
-        </div>
-        <i class="bi bi-three-dots-vertical"></i>
-      </article>
-    </section>
+      </section>
+      <section class="upnext">
+        <span class="title1">Up next</span>
+        <article class="item">
+          <div class="img">
+            <img src="./video/20170917_204428.jpg" alt="" />
+          </div>
+          <div class="info">
+            <span class="title2">
+              프론트엔드 강의, 프론트엔드 개발자가 되고 싶다면? 웹개발 입문자편
+              강의를 시작합니다 ⭐️ (HTML, CSS, Javascript + 실전 프로젝트)
+            </span>
+            <span class="who">드림코딩 by 엘리</span>
+            <span class="sub-info">82K views</span>
+          </div>
+          <button class="morebtn">
+            <i class="bi bi-three-dots-vertical"></i>
+          </button>
+        </article>
+        <article class="item">
+          <div class="img">
+            <img src="./video/20170917_204428.jpg" alt="" />
+          </div>
+          <div class="info">
+            <span class="title2">
+              프론트엔드 강의, 프론트엔드 개발자가 되고 싶다면? 웹개발 입문자편
+              강의를 시작합니다 ⭐️ (HTML, CSS, Javascript + 실전 프로젝트)
+            </span>
+            <span class="who">드림코딩 by 엘리</span>
+            <span class="sub-info">82K views</span>
+          </div>
+          <button class="morebtn">
+            <i class="bi bi-three-dots-vertical"></i>
+          </button>
+        </article>
+      </section>
+    </div>
   </body>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
