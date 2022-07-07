@@ -50,7 +50,10 @@ body {
   overflow: auto;
   display: flex;
   flex-wrap: nowrap;
-
+  border-bottom: 1px solid darkgray;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   > .storys__mystory {
     margin-right: 15px;
     > .storys__username {
@@ -60,7 +63,6 @@ body {
     > img {
       width: 100px;
       height: 100px;
-      border: 1px white solid;
       border-radius: 50%;
     }
   }
@@ -68,7 +70,34 @@ body {
 
 .content {
   width: 100%;
-
+  margin-top: $padding;
+  margin: $padding 0px $padding 0px;
+  > .content_img {
+    width: 100%;
+  }
+  > .icons {
+    display: flex;
+    justify-content: space-between;
+  }
+  > .subContent {
+    > .subContent__input {
+      margin-top: $padding;
+      display: flex;
+      justify-content: space-between;
+      > .subContent__userImage {
+        width: 30px;
+        height: 30px;
+      }
+      > .subContent__incons {
+        > button {
+          background-color: white;
+        }
+      }
+      > .subContent__insert {
+        flex: 1;
+      }
+    }
+  }
   > .header {
     width: 100%;
     display: flex;
@@ -80,5 +109,25 @@ body {
         border-radius: 50%;
       }
     }
+  }
+}
+
+.footer {
+  width: 628px;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid darkgray;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  img {
+    width: 25px;
+    height: 25px;
+  }
+  > .footer__mypage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
